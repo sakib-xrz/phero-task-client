@@ -1,11 +1,11 @@
 "use client";
 
-import useUserStore from "@/store";
+import useStore from "@/store/store";
 import { Button } from "antd";
 import Link from "next/link";
 
 export default function Navbar() {
-  const { user, logout } = useUserStore();
+  const { user, logout } = useStore();
 
   return (
     <div className="flex items-center justify-between">

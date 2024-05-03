@@ -1,9 +1,9 @@
 import { create } from "zustand";
-import { AUTH_TOKEN_KEY } from "./common/KeyChain";
-import HttpKit from "./common/HttpKit";
-import ApiKit from "./common/ApiKit";
+import { AUTH_TOKEN_KEY } from "../common/KeyChain";
+import HttpKit from "../common/HttpKit";
+import ApiKit from "../common/ApiKit";
 
-const useUserStore = create(() => ({
+const useStore = create(() => ({
   user: null,
   isLoading: false,
 
@@ -12,25 +12,25 @@ const useUserStore = create(() => ({
   },
 
   setUser: (token) => {
-    useUserStore.setState({ isLoading: true });
+    useStore.setState({ isLoading: true });
     HttpKit.setTokenAndRedirect(token);
     ApiKit.me
       .getMe()
       .then(({ data }) => {
-        useUserStore.setState({ user: data?.user });
+        useStore.setState({ user: data?.user });
       })
       .catch((error) => {
         console.error(error);
       })
       .finally(() => {
-        useUserStore.setState({ isLoading: false });
+        useStore.setState({ isLoading: false });
       });
   },
 
   logout: () => {
     localStorage.removeItem(AUTH_TOKEN_KEY);
-    useUserStore.setState({ user: null });
+    useStore.setState({ user: null });
   },
 }));
 
-export default useUserStore;
+export default useStore;

@@ -6,7 +6,7 @@ import logo from "@/public/logo.png";
 import { Button, Form, Input } from "antd";
 import Link from "next/link";
 import ApiKit from "@/common/ApiKit";
-import useUserStore from "@/store";
+import useStore from "@/store/store";
 import { useRouter, useSearchParams } from "next/navigation";
 import HttpKit from "@/common/HttpKit";
 import { toast } from "sonner";
@@ -15,7 +15,7 @@ export default function Login() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const previousURL = searchParams.get("next");
-  const { setUser, setToken } = useUserStore();
+  const { setUser, setToken } = useStore();
 
   const onFinish = (values) => {
     const payload = {
