@@ -13,7 +13,7 @@ const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
 
-export default function Login() {
+export default function Register() {
   return (
     <div className="px flex min-h-screen items-center justify-center px-4">
       <div className="mx-auto w-full sm:w-2/3 sm:py-10 xl:w-1/3">
@@ -28,7 +28,7 @@ export default function Login() {
             />
           </div>
           <h2 className=" text-center text-3xl font-semibold">
-            Login to your account
+            Create an account
           </h2>
 
           <Form
@@ -37,11 +37,26 @@ export default function Login() {
             autoComplete="off"
             layout="vertical"
             initialValues={{
+              name: "Sakibul Islam",
               email: "sakib@gmail.com",
               password: "123456",
             }}
             requiredMark={false}
           >
+            <Form.Item
+              label={<p className="font-semibold">Name</p>}
+              name="name"
+              rules={[
+                {
+                  message: "Please input your name!",
+                  required: true,
+                  min: 3,
+                },
+              ]}
+            >
+              <Input placeholder="John Doe" />
+            </Form.Item>
+
             <Form.Item
               label={<p className="font-semibold">Email</p>}
               name="email"
@@ -76,12 +91,12 @@ export default function Login() {
             </Form.Item>
 
             <p className="text-center text-sm font-medium leading-none">
-              Don’t have an account?{" "}
+              Already have an account?{" "}
               <Link
-                href={"/register"}
+                href={"/login"}
                 className="p-0 font-semibold text-primary hover:underline"
               >
-                Create Account
+                Login
               </Link>
             </p>
           </Form>
