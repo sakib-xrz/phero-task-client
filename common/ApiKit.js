@@ -18,6 +18,12 @@ const ApiKit = {
       return client.post(url, payload);
     },
   },
+  me: {
+    getMe: () => {
+      const url = "/me";
+      return client.get(url);
+    },
+  },
 };
 
 export default ApiKit;

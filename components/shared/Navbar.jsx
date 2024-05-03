@@ -6,6 +6,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   const { user, logout } = useUserStore();
+
   return (
     <div className="flex items-center justify-between">
       Navbar

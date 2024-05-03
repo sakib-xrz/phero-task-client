@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ConfigProvider } from "antd";
+import { Toaster } from "sonner";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ export default function GlobalProvider({ children }) {
           }}
         >
           <QueryClientProvider client={queryClient}>
+            <Toaster duration={2000} position="bottom-right" richColors />
             {children}
           </QueryClientProvider>
         </ConfigProvider>
